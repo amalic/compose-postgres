@@ -37,6 +37,12 @@ GRANT postgres TO database_creator;
 ALTER DEFAULT PRIVILEGES GRANT SELECT ON TABLES TO database_creator;
 ALTER DEFAULT PRIVILEGES GRANT EXECUTE ON FUNCTIONS TO database_creator;
 
+-- Prepare some group roles used in the create_role function
+-- (actually optional, but useful in the long run)
+CREATE ROLE db_admin NOLOGIN NOSUPERUSER INHERIT NOCREATEDB NOCREATEROLE NOREPLICATION;
+CREATE ROLE data_writer NOLOGIN NOSUPERUSER INHERIT NOCREATEDB NOCREATEROLE NOREPLICATION;
+CREATE ROLE data_reader NOLOGIN NOSUPERUSER INHERIT NOCREATEDB NOCREATEROLE NOREPLICATION;
+
 
 -- ================================================================================================
 -- Create function for role creation
